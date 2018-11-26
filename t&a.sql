@@ -198,6 +198,30 @@ CREATE TABLE IF NOT EXISTS `tea`.`itens_atendimento` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+RENAME TABLE mesa TO mesas;
+
+ALTER TABLE `usuarios`  DROP `usuarioscol`;
+
+rename table tipo_usuario to tipo_usuarios;
+
+insert into tipo_usuarios (tip_nome) values ('Administrador');
+
+insert into tipo_usuarios (tip_nome) values ('Funcionário');
+
+insert into tipo_usuarios (tip_nome) values ('Cliente');
+
+RENAME table itens_atendimento to itens_atendimentos;
+
+ALTER TABLE `servicos` CHANGE `ser_preco` `ser_preco` VARCHAR(6) NOT NULL;
+
+ALTER TABLE `atendimento` CHANGE `fun_id` `fun_id` INT(11) NULL;
+
+ALTER TABLE `servicos_atendimento` CHANGE `ser_ate_id` `ser_ate_id` INT(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `servicos_atendimento` CHANGE `ser_preco` `ser_preco` VARCHAR(6) NOT NULL;
+
+ALTER TABLE `itens_atendimentos` CHANGE `ite_preco` `ite_preco` VARCHAR(6) NOT NULL;
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
